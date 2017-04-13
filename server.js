@@ -7,7 +7,15 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 //Connect to database
-mongoose.connect('')
+if(process.env.NODE_ENV = "production"){
+  mongoose.connect(process.env.MONGODB_URI)
+}
+else if (process.env.NODE_ENV = "test") {
+  mongoose.connect('localhost:27017/bears-test')
+}
+else{
+  mongoose.connect('localhost:27017/bears-development')
+}
 
 // how to configure app to use bodyParser()
 app.use(bodyParser.urlencoded({extended: true}));
