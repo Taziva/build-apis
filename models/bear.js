@@ -5,4 +5,4 @@ const BearSchema = new Schema({
   name: String
 })
 
-export default mongoose.model('Bear', BearSchema);
+module.exports = mongoose.model('Bear', BearSchema);
